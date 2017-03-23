@@ -116,3 +116,39 @@ Error when running `deploy_k8s` script due to K8 API route registration failure
 ### Solution
 
 Please check that the route to the TCP routing API URL is accessible.  The URL is defined in the field `routing-cf-api-url` in your `<BOSH_ENV>/director.yml`.
+
+## Problem
+
+Failures during [OSS deployment](https://github.com/cloudfoundry-incubator/bosh-google-cpi-release/tree/master/docs/cloudfoundry) due to timeouts. Failure to deploy Kubo alongside an OSS deployment due to timeouts.
+
+### Solution
+
+Retry the deployment commands. This can be caused by the default preemptable compilation VMs or by failure to resolve the `xip.io` domain.
+
+If you have access to a domain then you can increase reliability by using it for your Cloud Foundry deployment. If you do not mind the increased cost you can remove the [preemptable](https://github.com/cloudfoundry-incubator/bosh-google-cpi-release/tree/master/src/bosh-google-cpi#bosh-resource-pool-options) property from the compilation workers in the Cloud Foundry manifest.
+
+## Problem
+
+Failure when deploying K8S after complete redeployment of KuBOSH.
+
+```
+$ bin/deploy_k8s <BOSH_ENV> <NAME> public
+=====================================
+|     BOSH K8S Cluster Deployer     |
+=====================================
+
+Fetching info:
+  Performing request GET 'https://10.0.7.4:25555/info':
+    Performing GET request:
+      Retry: Get https://10.0.7.4:25555/info: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
+
+Exit code 1
+```
+
+### Solution
+
+Reset BOSH alias to use new SSL certificate.
+
+```
+$ bin/set_bosh_alias <BOSH_ENV>
+```

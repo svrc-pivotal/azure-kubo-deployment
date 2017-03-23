@@ -123,12 +123,32 @@ resources:
     url: {{slack-url}}
 
 jobs:
+- name: run-unit-tests
+  plan:
+  - get: git-kubo-deployment
+    version: every
+    trigger: true
+  - get: git-kubo-release
+    version: every
+    trigger: true
+  - task: run-unit-tests
+    file: git-kubo-deployment/ci/tasks/run-unit-tests.yml
+    on_failure:
+      put: slack-alert
+      params:
+        silent: true
+        icon_emoji: ":thumbsdown:"
+        text: |
+          Kubo release unit tests failed:
+          https://p-concourse.kubo.cf-app.com/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+
 - name: claim-lock
   max_in_flight: 1
   plan:
   - aggregate:
     - get: git-kubo-release
       trigger: true
+      passed: [ 'run-unit-tests' ]
     - get: git-kubo-deployment
       trigger: true
   - put: kubo-lock
@@ -334,9 +354,9 @@ jobs:
   - aggregate:
     - get: git-kubo-deployment
       passed: [ destroy-bosh ]
-      trigger: true
     - get: kubo-version
       passed: [ destroy-bosh ]
+      trigger: true
   - task: create-kubo-deployment-tarball
     file: git-kubo-deployment/ci/tasks/create-kubo-deployment-tarball.yml
   - aggregate:
@@ -352,10 +372,10 @@ jobs:
   plan:
   - aggregate:
     - get: s3-kubo-release-tarball-tmp
-      trigger: true
       passed: [ destroy-bosh ]
     - get: kubo-version
       passed: [ destroy-bosh ]
+      trigger: true
   - aggregate:
     - put: s3-kubo-release-tarball
       params:
