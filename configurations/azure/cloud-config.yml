@@ -1,0 +1,54 @@
+azs:
+- name: z1
+  cloud_properties:
+    availability_zone: ((az))
+- name: z2
+  cloud_properties:
+    availability_zone: ((az))
+- name: z3
+  cloud_properties:
+    availability_zone: ((az))
+
+vm_types:
+- name: common
+  cloud_properties:
+    instance_type: Standard_F1s
+    ephemeral_disk: {use_root_disk: true}
+- name: master
+  cloud_properties:
+    instance_type: Standard_F1s
+    ephemeral_disk: {use_root_disk: true}
+- name: worker
+  cloud_properties:
+    instance_type: Standard_F8s
+    ephemeral_disk: {use_root_disk: true}
+    root_disk: {size: 102_400}
+
+disk_types:
+- name: 10240
+  disk_size: 10240
+  cloud_properties:
+    storage_account_type: Premium_LRS
+- name: 5120
+  disk_size: 5120
+  cloud_properties:
+    storage_account_type: Premium_LRS
+
+networks:
+- name: ((deployments_network))
+  type: manual
+  subnets:
+  - range: ((internal_cidr))
+    gateway: ((internal_gw))
+    azs: [z1, z2, z3]
+    dns: [168.63.129.16]
+    reserved: [((internal_gw))/30]
+    cloud_properties:
+      subnet: ((subnet_id))
+
+compilation:
+  workers: 5
+  reuse_compilation_vms: true
+  az: z1
+  vm_type: worker
+  network: ((deployments_network))
