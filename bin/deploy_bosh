@@ -122,7 +122,6 @@ generate_manifest_azure() {
   bosh-cli int "$(repo_directory)/bosh-deployment/bosh.yml"  \
     --ops-file "$(repo_directory)/bosh-deployment/azure/cpi.yml" \
     --ops-file "$(repo_directory)/bosh-deployment/azure/use-managed-disks.yml" \
-    --ops-file "$(repo_directory)/bosh-deployment/azure/custom-environment.yml" \
     --ops-file "$(repo_directory)/bosh-deployment/uaa.yml" \
     --ops-file "$(repo_directory)/bosh-deployment/misc/powerdns.yml" \
     --ops-file "$(repo_directory)/bosh-deployment/credhub.yml" \
