@@ -1,0 +1,9 @@
+resource_group_name: # Azure Resource Group
+vnet_name: # Azure Virtual Network name
+subnet_name: # Azure Subnet Name
+security_group:  # Cloud Config Security Group
+default_security_group:  # Default Network Security Group
+client_id: # Azure Service Principal GUID
+tenant_id: # Azure Tenant GUID
+subscription_id: # Azure Subscription GUID
+storage_account_type:  # Standard_LRS or Premium_LRS
