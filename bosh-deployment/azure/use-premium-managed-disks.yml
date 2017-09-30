@@ -15,10 +15,6 @@
 
 - type: replace
   path: /disk_pools/name=disks/cloud_properties?
-  value:
-    storage_account_type: {{storage_account_type}}
+  value: 
+    storage_account_type: Premium_LRS
 
-- type: replace
-  path: /resource_pools/name=vms/cloud_properties/-
-  value:
-    storage_account_type: {{storage_account_type}}
