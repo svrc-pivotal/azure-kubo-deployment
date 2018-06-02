@@ -63,7 +63,10 @@ main() {
   "$(repo_directory)/bin/set_bosh_alias" "${bosh_env}"
 
   BOSH_ENV="$bosh_env" source "$(repo_directory)/bin/set_bosh_environment"
-  bosh update-runtime-config -n "$(repo_directory)/bosh-deployment/runtime-configs/dns.yml"
+
+  if [[ ! "azure" == "${iaas}" ]]; then
+    bosh update-runtime-config -n "$(repo_directory)/bosh-deployment/runtime-configs/dns.yml"
+  fi
 
   export_bosh_environment "${bosh_env}"
   set_cloud_config
