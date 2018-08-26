@@ -18,7 +18,7 @@
           vnet-name: ((vnet_name))
           subnet-name: ((subnet_name))
           network-security-group-name: ((default_security_group))
-          availability-set: ((prefix))-worker
+          availability-set: ((primary_availability_set)
 
     provides:
       cloud-provider: {as: master-cloud-provider}
@@ -63,9 +63,15 @@
           vnet-name: ((vnet_name))
           subnet-name: ((subnet_name))
           network-security-group-name: ((default_security_group))
-          availability-set: ((prefix))-worker
+          availability-set: ((primary_availability_set))
     provides:
       cloud-provider: {as: worker-cloud-provider}
+
+- type: replace
+  path: /instance_groups/name=worker/jobs/-
+  value:
+    name: cifs-utils
+    release: kubo
 
 - type: replace
   path: /instance_groups/name=worker/jobs/name=kubelet/consumes?

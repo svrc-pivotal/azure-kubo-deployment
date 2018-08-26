@@ -1,0 +1,12 @@
+azure_cloud_name: AzureCloud
+subscription_id: dddddddd-aaaa-4444-3222-999999999999
+tenant_id: dddddddd-aaaa-4444-3222-999999999999
+client_id: dddddddd-aaaa-4444-3222-999999999999
+client_secret: clientpassword
+location: eastus2
+resource_group_name: cfcr-example-rg
+vnet_resource_group_name: cfcr-optional-separate-vnet-example-rg
+vnet_name: cfcr-example-vnet
+subnet_name: cfcr-example-subnet
+default_security_group: cfcr-example-nsg
+primary_availability_set: cfcr-worker-availability-set
