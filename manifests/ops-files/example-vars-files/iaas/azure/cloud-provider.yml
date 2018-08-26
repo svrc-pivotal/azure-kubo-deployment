@@ -1,4 +1,4 @@
-azure_cloud_name: AzureCloud
+azure_cloud_name: AzurePublicCloud
 subscription_id: dddddddd-aaaa-4444-3222-999999999999
 tenant_id: dddddddd-aaaa-4444-3222-999999999999
 client_id: dddddddd-aaaa-4444-3222-999999999999
