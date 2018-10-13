@@ -185,23 +185,25 @@ instance_groups:
 name: cfcr
 releases:
 - name: kubo
-  version: latest
+  sha1: e4b157aee849be24062d5255607b5696ef2ab524
+  url: https://github.com/cloudfoundry-incubator/kubo-release/releases/download/v0.22.0/kubo-release-0.22.0.tgz
+  version: 0.22.0
 - name: cfcr-etcd
-  sha1: f753236e370547e2d3aac9a37905f9c14e04acf8
-  url: https://github.com/cloudfoundry-incubator/cfcr-etcd-release/releases/download/v1.4.0/cfcr-etcd-release-1.4.0.tgz
-  version: 1.4.0
+  sha1: 728839a7ddd44757e31ef0fdbcd131c2be23ab0e
+  url: https://github.com/cloudfoundry-incubator/cfcr-etcd-release/releases/download/v1.5.0/cfcr-etcd-release-1.5.0.tgz
+  version: 1.5.0
 - name: docker
   sha1: f192296243e68150ae66656fc9134a2b2a023184
   url: https://github.com/cloudfoundry-incubator/docker-boshrelease/releases/download/v32.0.0/docker-32.0.0.tgz
   version: 32.0.0
 - name: bosh-dns
-  sha1: 3b77329a772483d6c949f1a47ba9734976bc2b31
-  url: https://bosh.io/d/github.com/cloudfoundry/bosh-dns-release?v=1.8.0
-  version: 1.8.0
+  sha1: d1aadbda5d60c44dec4a429cda872cf64f6d8d0b
+  url: https://bosh.io/d/github.com/cloudfoundry/bosh-dns-release?v=1.10.0
+  version: 1.10.0
 - name: bpm
-  sha1: f2edbf3d1417a253205338c9941ca989cd2f8331
-  url: https://bosh.io/d/github.com/cloudfoundry-incubator/bpm-release?v=0.12.2
-  version: 0.12.2
+  sha1: 313664d2e6d8485ffa0683979a401f7722f63a50
+  url: https://bosh.io/d/github.com/cloudfoundry-incubator/bpm-release?v=0.12.3
+  version: 0.12.3
 stemcells:
 - alias: default
   os: ubuntu-xenial
