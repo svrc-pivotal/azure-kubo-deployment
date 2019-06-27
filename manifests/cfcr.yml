@@ -30,7 +30,7 @@ instance_groups:
   lifecycle: errand
   name: apply-addons
   networks:
-  - name: pcfservices
+  - name: main
   stemcell: default
   vm_type: minimal
 - azs:
@@ -337,7 +337,7 @@ instance_groups:
     release: kubo
   name: master
   networks:
-  - name: pcfservices
+  - name: main
   persistent_disk: 5120
   stemcell: default
   vm_type: small
@@ -433,7 +433,7 @@ instance_groups:
     release: kubo
   name: worker
   networks:
-  - name: pcfservices
+  - name: main
   stemcell: default
   vm_type: small-highmem
 name: cfcr
