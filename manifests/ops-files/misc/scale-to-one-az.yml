@@ -14,10 +14,10 @@
 
 - type: replace
   path: /instance_groups/name=master/azs
-  value: [ us-west1-a ]
+  value: [ us-east1-b ]
 - type: replace
   path: /instance_groups/name=worker/azs
-  value: [ us-west1-a ]
+  value: [ us-east1-b ]
 - type: replace
   path: /instance_groups/name=apply-addons/azs
-  value: [ us-west1-a ]
+  value: [ us-east1-b ]

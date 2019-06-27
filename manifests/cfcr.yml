@@ -10,7 +10,7 @@ features:
   use_dns_addresses: true
 instance_groups:
 - azs:
-  - us-west-1a
+  - us-east1-b
   instances: 1
   jobs:
   - name: apply-specs
@@ -34,7 +34,7 @@ instance_groups:
   stemcell: default
   vm_type: minimal
 - azs:
-  - us-west-1a
+  - us-east1-b
   - z2
   - z3
   instances: 3
@@ -342,7 +342,7 @@ instance_groups:
   stemcell: default
   vm_type: small
 - azs:
-  - us-west-1a
+  - us-east1-b
   - z2
   - z3
   instances: 3
