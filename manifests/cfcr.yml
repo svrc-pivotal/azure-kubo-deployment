@@ -11,7 +11,9 @@ features:
 instance_groups:
 - azs:
   - us-east1-b
-  instances: 1
+  - z2
+  - z3
+  instances: 3
   jobs:
   - name: apply-specs
     properties:
@@ -27,18 +29,6 @@ instance_groups:
         kubernetes-dashboard: ((tls-kubernetes-dashboard))
         metrics-server: ((tls-metrics-server))
     release: kubo
-  lifecycle: errand
-  name: apply-addons
-  networks:
-  - name: main
-  stemcell: default
-  vm_type: minimal
-- azs:
-  - us-east1-b
-  - z2
-  - z3
-  instances: 3
-  jobs:
   - name: bpm
     release: bpm
   - name: flanneld
@@ -455,9 +445,9 @@ stemcells:
   os: ubuntu-xenial
   version: 315.45
 update:
-  canaries: 1
+  canaries: 0
   canary_watch_time: 10000-300000
-  max_in_flight: 1
+  max_in_flight: 100
   update_watch_time: 10000-300000
 variables:
 - name: kubo-admin-password
