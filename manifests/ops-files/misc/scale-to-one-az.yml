@@ -8,16 +8,10 @@
 - type: replace
   path: /instance_groups/name=worker/instances
   value: 1
-- type: replace
-  path: /instance_groups/name=apply-addons/instances
-  value: 1
 
 - type: replace
   path: /instance_groups/name=master/azs
   value: [ us-east1-b ]
 - type: replace
   path: /instance_groups/name=worker/azs
-  value: [ us-east1-b ]
-- type: replace
-  path: /instance_groups/name=apply-addons/azs
   value: [ us-east1-b ]
