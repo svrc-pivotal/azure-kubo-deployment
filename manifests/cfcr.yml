@@ -446,7 +446,7 @@ stemcells:
   version: 315.45
 update:
   serial: false
-  canaries: 0
+  canaries: 1
   canary_watch_time: 10000-300000
   max_in_flight: 100
   update_watch_time: 10000-300000
