@@ -4,7 +4,7 @@
 # in a single Availability Zone.
 - type: replace
   path: /instance_groups/name=master/instances
-  value: 3
+  value: 1
 - type: replace
   path: /instance_groups/name=worker/instances
   value: 1
