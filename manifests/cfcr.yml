@@ -38,6 +38,9 @@ instance_groups:
           ca: ((tls-etcdctl-flanneld.ca))
           certificate: ((tls-etcdctl-flanneld.certificate))
           private_key: ((tls-etcdctl-flanneld.private_key))
+    provides:
+      flanneld:
+        as: worker-flanneld
     release: kubo
   - name: kube-apiserver
     properties:
@@ -426,24 +429,32 @@ instance_groups:
   - name: main
   stemcell: default
   vm_type: small-highmem
-name: cfcr
+ame: cfcr
 releases:
 - name: kubo
-  version: 0.34.0+dev.1
+  stemcell:
+    os: ubuntu-xenial
+    version: 456.3
+  version: 0.41.0+dev.1
 - name: cfcr-etcd
-  sha1: 6cffe156fc2eff27805c0129a6763ddad4803947
-  url: https://storage.googleapis.com/kubo-precompiled-releases/cfcr-etcd-1.11.1-ubuntu-xenial-315.41-20190618-231555-279805208.tgz
+  sha1: f87fdefcd1754da18d600aae1137466e733271f3
+  url: https://storage.googleapis.com/kubo-precompiled-releases/cfcr-etcd-1.11.1-ubuntu-xenial-456.30-20191008-185029-871352872.tgz
   version: 1.11.1
 - name: docker
-  sha1: 97a6fba0668e521a5f6dfffa14010ccc0c9308b1
-  url: https://storage.googleapis.com/kubo-precompiled-releases/docker-35.2.1-ubuntu-xenial-315.41-20190618-231154-501999472.tgz
-  version: 35.2.1
+  sha1: 3f984427501e1ab8da5d7c43bb12786fb7f2298b
+  stemcell:
+    os: ubuntu-xenial
+    version: 456.3
+  url: https://storage.googleapis.com/kubo-precompiled-releases/docker-35.3.4-ubuntu-xenial-456.30-20191010-220825-027336158.tgz
+  version: 35.3.4
 - name: bpm
+  sha1: 9641c3efe4a6b74799ebaf01315bdb1d43924289
+  url: https://storage.googleapis.com/kubo-precompiled-releases/bpm-1.0.4-ubuntu-xenial-456.30-20191008-185643-193448757.tgz
   version: 1.0.4
 stemcells:
 - alias: default
   os: ubuntu-xenial
-  version: 315.45
+  version: "456.30"
 update:
   serial: false
   canaries: 0
