@@ -432,9 +432,6 @@ instance_groups:
 name: cfcr
 releases:
 - name: kubo
-  stemcell:
-    os: ubuntu-xenial
-    version: 456.3
   version: 0.41.0+dev.1
 - name: cfcr-etcd
   version: 1.11.1
