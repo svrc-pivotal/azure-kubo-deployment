@@ -429,7 +429,7 @@ instance_groups:
   - name: main
   stemcell: default
   vm_type: small-highmem
-ame: cfcr
+name: cfcr
 releases:
 - name: kubo
   stemcell:
